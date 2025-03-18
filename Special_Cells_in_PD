@@ -1,0 +1,25 @@
+1. Physical-Only Cells
+  These cells exist only in the layout and do not have a logical representation in the netlist. They do not have a Liberty (.lib) file since they do not contribute to timing or functionality.
+
+* Types of Physical-Only Cells
+
+    1]Filler cell 
+        a) What is a Filler Cell?
+          --> A filler cell is a special physical-only cell used in ASIC layout to fill empty spaces between standard cells. It does not have any logical function but helps in maintaining the continuity .
+
+              
+              A] Why are Filler Cells Needed?
+                -->
+                    To Maintain Diffusion and Well Continuity:
+                        Standard cells contain n-wells, p-wells, and active diffusion regions. If there are gaps between standard cells, the continuity of these regions is broken, which can cause manufacturing defects.
+                        Filler cells help bridge these gaps and ensure there is no discontinuity in the implant layers.
+                
+                    To Maintain Metal Connectivity for Power Rails (VDD/VSS):
+                        In a digital design, power (VDD) and ground (VSS) rails run horizontally.
+                        If there are gaps in standard cell rows, these rails might not be continuous, leading to power connectivity issues.
+                        Filler cells contain metal layers that help in maintaining power connectivity.
+                
+                    To Avoid Design Rule Check (DRC) Violations:
+                        Foundries have minimum spacing and continuity rules for diffusion, wells, and metal layers.
+                        Gaps can cause DRC errors, and filler cells help meet these design rules.
+  
