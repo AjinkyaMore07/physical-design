@@ -23,3 +23,17 @@
                         Foundries have minimum spacing and continuity rules for diffusion, wells, and metal layers.
                         Gaps can cause DRC errors, and filler cells help meet these design rules.
   
+            B]  What Happens If We Don’t Insert Filler Cells?
+    
+                    If filler cells are not inserted:
+                ❌ Breaks in diffusion and well layers → Can lead to leakage currents or functional failure.
+                ❌ Breaks in power rails (VDD/VSS) → Some standard cells may not get power, causing functional issues.
+                ❌ DRC Violations → The design may fail physical verification, requiring additional fixes before fabrication.
+                ❌ Increased Susceptibility to Latch-up → Discontinuous wells can cause parasitic thyristor formation, leading to latch-up failures.
+
+
+
+
+    2] What is an Endcap Cell (Boundary Cell)?
+        --> An Endcap Cell (also called a Boundary Cell) is a special physical-only cell placed at the beginning and end of each standard cell row in an ASIC layout. It does not have any logical function but is crucial for maintaining design integrity and reliability.
+      
