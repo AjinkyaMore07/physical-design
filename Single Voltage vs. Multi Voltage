@@ -1,0 +1,43 @@
+ASIC Physical Design: Single Voltage vs. Multi Voltage
+
+I. Overview:
+
+    Single Voltage Design: Uses one power supply voltage for the entire chip.
+    Multi Voltage Design: Employs different power supply voltages for different blocks/domains on the chip.
+
+II. Comparison Table:
+Feature 	                                        Single Voltage Design 	                                Multi Voltage Design
+Definition 	                                Single power supply for entire chip. 	                  Multiple power supplies for different blocks.
+
+Power Efficiency 	                    Less efficient (all blocks run at same voltage). 	        More efficient (blocks operate at required voltage, reduces power).
+
+Complexity   	                              Simpler; Easier timing closure. 	                      More complex; Requires level shifters & isolation cells.
+
+Design Overhead 	                        Lower design and verification effort. 	              Higher effort (voltage islands, isolation, power mode transitions).
+
+Area & Routing 	                        Fewer power rails; Less routing congestion. 	              More routing for multiple power rails and level shifters.
+
+Performance 	                                Uniform performance level. 	                     Selective high-performance regions; Optimize other parts for low power.
+
+Use Cases 	                      Simpler designs; Power not a primary concern.                            Power-sensitive applications.
+                                        (e.g., Basic microcontrollers, small ASICs). 	         (e.g., Mobile processors, SoCs, Battery-powered devices).
+
+III. Key Challenges in Multi Voltage Design:
+
+  1  Level Shifters:
+        Required between voltage domains.
+        Prevent signal integrity issues.
+
+  2  Isolation Cells:
+        Needed when a power domain is turned off.
+        Prevent floating signals from causing issues in active domains.
+
+  3  Power Routing Complexity:
+        Multiple power rails.
+        Increased congestion.
+        Requires careful planning and routing strategies.
+
+  4  Timing Closure Complexity:
+        Different voltage levels affect signal delay.
+        Requires multi-mode timing analysis to ensure correct operation across all voltage configurations.
+
