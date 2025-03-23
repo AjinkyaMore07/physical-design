@@ -1,0 +1,57 @@
+Why PMOS called as pull up and NMOS called as pull down?
+
+
+PMOS as Pull-Up, NMOS as Pull-Down: CMOS Inverter Example
+
+Core Concept: The "pull-up" and "pull-down" terminology describes how PMOS and NMOS transistors influence the output voltage in a CMOS circuit (like an inverter) based on the input.
+
+Example: CMOS Inverter (NOT Gate)
+
+    Structure:
+        PMOS: Top, connected to VDD (Supply Voltage) - forms the Pull-Up Network
+        NMOS: Bottom, connected to GND (Ground) - forms the Pull-Down Network
+
+    Assumptions (Example Values):
+        VDD = 1.8V
+        Vth,n (NMOS Threshold Voltage) = 0.4V
+        Vth,p (PMOS Threshold Voltage) = -0.4V (Note: We use |Vth,p| for comparison)
+
+Case 1: Input = 0V (Logic 0)
+
+    NMOS Analysis:
+        VGS,n = 0V - 0V = 0V
+        0V < 0.4V => NMOS is OFF
+
+    PMOS Analysis:
+        VSG,p = 1.8V - 0V = 1.8V
+        1.8V > 0.4V => PMOS is ON
+
+    Result: PMOS pulls the output up to VDD. Vout = 1.8V (Logic 1)
+
+Case 2: Input = 1.8V (Logic 1)
+
+    NMOS Analysis:
+        VGS,n = 1.8V - 0V = 1.8V
+        1.8V > 0.4V => NMOS is ON
+
+    PMOS Analysis:
+        VSG,p = 1.8V - 1.8V = 0V
+        0V < 0.4V => PMOS is OFF
+
+    Result: NMOS pulls the output down to GND. Vout = 0V (Logic 0)
+
+Why "Pull-Up" and "Pull-Down"?
+
+    PMOS (Pull-Up): When the input is low (0V), PMOS turns ON and connects the output to VDD (pulling it high).
+    NMOS (Pull-Down): When the input is high (1.8V), NMOS turns ON and connects the output to GND (pulling it low).
+
+Key Equations (for understanding transistor behavior):
+
+    NMOS ON: VGS,n > Vth,n
+    PMOS ON: VSG,p > |Vth,p| (Important to use the absolute value of Vth,p)
+    Drain-Source Voltage: VDS = VD - VS
+    Current Flow:
+        NMOS ON: Current flows from output to ground.
+        PMOS ON: Current flows from VDD to output.
+
+In essence, the names "pull-up" and "pull-down" directly reflect the direction in which the transistors drive the output voltage when they are in the ON state.
